@@ -1,14 +1,15 @@
-
-import useGlobalReducer from "../hooks/useGlobalReducer";
+import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { Link } from "react-router-dom";
+import React, {useState} from "react";
 
 
-const CardShips = ({ships}) => {
+
+const CardShips = ({ship}) => {
 const { store, dispatch } = useGlobalReducer()
-const isFav = store.favorites.some(f => f.name === ships.name);
+const isFav = store.favorites.some(f => f.name === ship.name);
 const toggleFavorite = () => {
         if (isFav) {
-            const index = store.favorites.findIndex(f => f.name === ships.name);
+            const index = store.favorites.findIndex(f => f.name === ship.name);
             dispatch({
                 type: "remove_favorite",
                 payload: { index }
@@ -18,9 +19,9 @@ const toggleFavorite = () => {
                 type: "add_favorite",
                 payload: {
                     item: {
-                        name: ships.name,
-                        uid: ships.uid,
-                        type: "ships"
+                        name: ship.name,
+                        uid: ship.uid,
+                        type: "ship"
                     }
                 }
             });
@@ -31,19 +32,19 @@ const toggleFavorite = () => {
 
 
     return (
-        <div>
+        
             <div className="card mx-1" style={{ minWidth: "18rem" }}>
-                <img src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/starships/${ships.uid}.jpg`} className="card-img-top" alt="..." />
+                <img src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/starships/${ship.uid}.jpg`} className="card-img-top" alt="..." />
                 <div className="card-body">
-                    <h4 className="card-title"> {ships.name}</h4>
-                   <Link  to={`/naves/${ships.uid}`} className="btn btn-warning">Learn More</Link>
-                    <button className={`btn ${isFav ? "btn btn-outline-warning" : "btn-secondary"} ms-2`} onClick={toggleFavorite}>{isFav ? "♥" : "♡"}
+                    <h4 className="card-title"> Name: {ship.name}</h4>
+                   <Link  to={`/nave/${ship.uid}`} className="btn btn-success">Learn More</Link>
+                    <button className={`btn ${isFav ? "btn btn-outline-danger" : "btn-warning"} ms-2`} onClick={toggleFavorite}>{isFav ? "♥" : "♡"}
                     </button>
                     
                     
                 </div>
             </div>
-        </div>
+        
     )
 
 

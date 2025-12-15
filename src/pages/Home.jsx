@@ -10,28 +10,25 @@ export const Home = () => {
 	const { store, dispatch } = useGlobalReducer()
 
 	async function character() {
-
 		const response = await fetch("https://www.swapi.tech/api/people/")
-
 		const data = await response.json()
 		const todosPersonajes = data.results;
 		dispatch({
 			type: "get_characters",
-			payload: { character: todosPersonajes }
+			payload: { personajes: todosPersonajes }
 		})
 
 
 	}
 
-	async function planets() {
+	async function world() {
 
 		const response = await fetch("https://www.swapi.tech/api/planets/")
-
 		const data = await response.json()
 		const planetasExistentes = data.results;
 		dispatch({
 			type: "get_planets",
-			payload: { planets: planetasExistentes }
+			payload: { planetas: planetasExistentes }
 		})
 
 
@@ -45,7 +42,7 @@ export const Home = () => {
 		
 		dispatch({
 			type: "get_ships",
-			payload: { ships: navesExistentes }
+			payload: { naves: navesExistentes }
 		})
 
 
@@ -55,15 +52,15 @@ export const Home = () => {
 
 	useEffect(() => {
 		character()
-		planets()
+		world()
 		ships()
 	}, [])
 
 
 
 	return (
-		<div className="text-start mt-5">
-			<h1 className="fw-bold text-center">Que la Fuerza Este Contigo </h1>
+		<div className="text-center mt-5">
+			<h1 className="fw-bold text-center"> Blog Starwars </h1>
 			<h2 className="text-danger"> Characters </h2>
 			<div className="container py-2 overflow-auto">
 				<div className="d-flex flex-row flex-nowrap">
@@ -82,11 +79,11 @@ export const Home = () => {
 		<h2 className="text-danger"> Planets </h2>
 			<div className="container py-2 overflow-auto">
 				<div className="d-flex flex-row flex-nowrap">
-				{store.planets.map((value, index) => {
+				{store.world.map((value, index) => {
 
 					return (
 
-						<CardPlanets key={index} planets={value}/>
+						<CardPlanets key={index} orb={value}/>
 					)
 				})}
 
@@ -102,7 +99,7 @@ export const Home = () => {
 
 					return (
 
-						<CardShips key={index} ships={value}/>
+						<CardShips key={index} ship={value}/>
 					)
 				})}
 

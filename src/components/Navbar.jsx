@@ -6,16 +6,16 @@ export const Navbar = () => {
 	const { store, dispatch } = useGlobalReducer();
 
 	return (
-		<nav className="navbar navbar-light bg-light">
+		<nav className="navbar bg-warning">
 			<div className="container">
 				<Link to="/">
 					<img width="50" height="50" src="https://img.icons8.com/ios/50/star-wars.png" alt="star-wars" />
 				</Link>
 				<div className="ml-auto">
 					
-						<div className="dropdown">
-							<button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-								Favorites ({store.favorites.lenght})
+						<div className="nav-item dropdown btn btn-warning">
+							<button className="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Favorites ({store.favorites.length})
 							</button>
 							<ul className="dropdown-menu">
 								{store.favorites.map((fav, index) => (

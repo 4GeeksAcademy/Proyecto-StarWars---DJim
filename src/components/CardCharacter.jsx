@@ -1,6 +1,8 @@
 
-import useGlobalReducer from "../hooks/useGlobalReducer";
+import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { Link } from "react-router-dom";
+import React, {useState} from "react";
+
 
 
 const CardCharacter = ({ char }) => {
@@ -14,7 +16,7 @@ const CardCharacter = ({ char }) => {
                 payload: { index }
             });
         } else {
-             dispatch({
+            dispatch({
                 type: "add_favorite",
                 payload: {
                     item: {
@@ -26,27 +28,27 @@ const CardCharacter = ({ char }) => {
             });
         }
     };
-    
-    
+
+
 
 
 
 
     return (
-        <div className="card mx-1" style={{ minWidth: "18rem"}}>
-                    <img src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/people/${char.uid}.jpg`} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                    <h5 className="card-title">Name:{char.name}</h5>
-                    <Link to={`/personajes/${char.uid}`} className="btn btn-warning">Learn More</Link>
-                    <button className={`btn ${isFav ? "btn btn-outline-warning" : "btn-secondary"} ms-2`}onClick={toggleFavorite}>{isFav ? "♥" : "♡"}
-                    </button>
-                </div>
+        <div className="card mx-1" style={{ minWidth: "18rem" }}>
+            <img src={`https://raw.githubusercontent.com/breatheco-de/swapi-images/master/public/images/people/${char.uid}.jpg`} className="card-img-top" alt="..." />
+            <div className="card-body">
+                <h5 className="card-title">Name:{char.name}</h5>
+                <Link to={`/personaje/${char.uid}`} className="btn btn-success">Learn More</Link>
+                <button className={`btn ${isFav ? "btn btn-outline-danger" : "btn-warning"} ms-2`} onClick={toggleFavorite}>{isFav ? "♥" : "♡"}
+                </button>
+            </div>
         </div>
 
 
 
-                
-            
+
+
 
 
     )

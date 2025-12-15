@@ -1,13 +1,13 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
-import { useEffect, useState } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 
 
 export const DetailShip = () => {
     const { uid } = useParams();
-const navigate = useNavigate();
-     const [ship, setShip] = useState({name:"", model:"", passengers:"", crew:"", manufacturer:"", length:"", starship_class:"", cargo_capacity: ""  
+    const navigate = useNavigate();
+    const [ship, setShip] = useState({name:"", model:"", passengers:"", crew:"", manufacturer:"", length:"", starship_class:"", cargo_capacity: ""  
     })
 
 

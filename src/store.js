@@ -15,7 +15,7 @@ export const initialStore = () => {
     ],
     character: [],
     favorites:[],
-    planets:[],
+    world:[],
     ships:[]
   }
 }
@@ -34,23 +34,23 @@ export default function storeReducer(store, action = {}) {
 
     //////////////////////////
     case "get_characters":
-      const { character } = action.payload
+      const { personajes } = action.payload
       return {
-        ...store, personajes: character
+        ...store, character: personajes
 
       };
     ///////////////////////////
       case "get_planets":
-      const { planets } = action.payload
+      const { planetas } = action.payload
       return {
-        ...store, planetas: planets
+        ...store, world: planetas
 
       };
     ////////////////////////
-case "get_ships":
-      const { ships } = action.payload
+      case "get_ships":
+      const { naves } = action.payload
       return {
-        ...store, naves: ships 
+        ...store, ships: naves 
       }
 
        case 'add_favorite': {
